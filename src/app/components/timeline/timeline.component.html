@@ -1,0 +1,21 @@
+<button class="live" (click)="live()">live</button>
+<div class="scale">
+    <button>year</button>
+    <button>month</button>
+    <button>day</button>
+</div>
+<div style="display: flex;">
+    <button class="move-time"><</button>
+    <div class="container" (click)="selected()">  
+        <div class="ruler">
+            <div class="line"></div>
+        </div>
+        <div class="contents"></div>
+        <div class="current" [ngStyle]="{ 'left.%':current }">
+            <div class="point"></div>
+            <p *ngIf="state">{{ timer | async | date:"hh:mm:ss:S" }}</p>
+            <p *ngIf="!state">{{ state$ | async | date:"hh:mm:ss:S" }}</p>
+        </div>
+    </div>
+    <button class="move-time">></button>
+</div>
